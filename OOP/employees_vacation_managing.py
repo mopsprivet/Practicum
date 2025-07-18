@@ -44,4 +44,26 @@ class OfficeEmployee(Employee):
             self.remaining_vacation_days += 4 
         elif self.worker_class == 3: 
             self.remaining_vacation_days += 6 
-        
+        elif self.worker_class == 4: 
+            self.remaining_vacation_days += 8 
+
+    def get_vacation_payment(self, vacation_days): 
+        self.vacation_days = vacation_days 
+        payment = round((self.__salary / 60) * self.vacation_days) 
+        return payment 
+
+
+
+# Пример использования:
+office_employee = OfficeEmployee('Иван', 'Иванов', 'м', 2, 45000)
+
+
+vacation_days = 10
+
+office_employee.consume_vacation(vacation_days)
+
+remaining_days = office_employee.get_remaining_vacation_days()
+print(f'У сотрудника осталось {remaining_days} дн. отпуска.')
+
+vacation_payment = office_employee.get_vacation_payment(vacation_days)
+print(f'За {vacation_days} дн. отпуска сотрудник получит {vacation_payment} руб.')
