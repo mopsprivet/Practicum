@@ -24,4 +24,20 @@ class Board:
                     # ...игра продолжается.
                     return False
         # Иначе - ничья!
-        return True
+        return True 
+    
+
+
+    def check_win(self, player):
+        # Проверка по горизонталям и вертикалям
+        for i in range(self.field_size):
+            if (all([self.board[i][j] == player for j in range(self.field_size)]) or
+                    all([self.board[j][i] == player for j in range(self.field_size)])):
+                return True
+    
+        # Проверка по диагоналям
+        if (all([self.board[i][i] == player for i in range(self.field_size)]) or
+                all([self.board[i][self.field_size - 1 - i] == player for i in range(self.field_size)])):
+            return True
+    
+        return False 
