@@ -15,13 +15,13 @@ def main():
             row = int(input('Введите номер строки: '))
             # Если введённое число меньше 0 или больше
             # или равно game.field_size...
-            if row < 0 or row >= game.field_size:
+            if row < 0 or row >= 3:
                 # ...выбрасывается собственное исключение FieldIndexError.
                 raise FieldIndexError
             column = int(input('Введите номер столбца: '))
             # Если введённое число меньше 0 или больше
             # или равно game.field_size...
-            if column < 0 or column >= game.field_size:
+            if column < 0 or column >= 3:
                 # ...выбрасывается собственное исключение FieldIndexError.
                 raise FieldIndexError
         # Если возникает исключение FieldIndexError...
@@ -29,7 +29,7 @@ def main():
             # ...выводятся сообщения...
             print(
                 'Значение должно быть неотрицательным и меньше '
-                f'{game.field_size}.'
+                '3.'
             )
             print('Пожалуйста, введите значения для строки и столбца заново.')
             # ...и цикл начинает свою работу сначала,
