@@ -8,11 +8,4 @@ class FieldIndexError(IndexError):
         
         super().__init__(message)
 
-# Вот оно - новое исключение, унаследованное от базового класса Exception.
-class CellOccupiedError(Exception):
-    def __init__(
-            self,
-            message='Попытка изменить занятую ячейку'
-        ):
-        
-        super().__init__(message)
+# Вот оно - ново
