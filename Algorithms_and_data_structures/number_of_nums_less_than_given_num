@@ -1,0 +1,16 @@
+def number_of_nums_less_than_given_num():
+    nums = list(map(int, input().split())) 
+    n = len(nums)
+    result = []
+
+    for i in range(n):
+        count = 0
+        for j in range(n):
+            if nums[j] < nums[i]:
+                count += 1
+        result.append(count)
+
+    print(" ".join(map(str, result))) 
+
+
+number_of_nums_less_than_given_num() 
