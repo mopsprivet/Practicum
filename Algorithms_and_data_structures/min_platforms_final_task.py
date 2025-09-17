@@ -1,4 +1,4 @@
-# id посылки: 142434290
+# id посылки: 142479599
 
 def min_amount_of_platforms(weights: list[int], limit: int) -> int:
     """Функция для поиска минимального кол-ва платформ
@@ -20,6 +20,6 @@ def min_amount_of_platforms(weights: list[int], limit: int) -> int:
 
 
 if __name__ == '__main__': 
-    weights: list[int] = [int(x) for x in input().split()]
+    weights: list[int] = [int(item) for item in input().split()]
     limit: int = int(input()) 
     print(min_amount_of_platforms(weights, limit)) 
