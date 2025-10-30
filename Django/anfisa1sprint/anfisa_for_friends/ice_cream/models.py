@@ -12,7 +12,10 @@ class Category(PublishedModel):
 
     class Meta:
         verbose_name = 'Категория'
-        verbose_name_plural = 'Категории'
+        verbose_name_plural = 'Категории' 
+
+    def __str__(self):
+        return self.title 
 
 
 class Wrapper(PublishedModel):
@@ -20,7 +23,10 @@ class Wrapper(PublishedModel):
 
     class Meta:
         verbose_name = 'Обёртка'
-        verbose_name_plural = 'Обёртки'
+        verbose_name_plural = 'Обёртки' 
+
+    def __str__(self):
+        return self.title 
 
 
 class Topping(PublishedModel):
@@ -29,7 +35,10 @@ class Topping(PublishedModel):
 
     class Meta:
         verbose_name = 'Топпинг'
-        verbose_name_plural = 'Топпинги'
+        verbose_name_plural = 'Топпинги' 
+
+    def __str__(self):
+        return self.title 
 
 
 class IceCream(PublishedModel):
@@ -52,4 +61,7 @@ class IceCream(PublishedModel):
 
     class Meta:
         verbose_name = 'Мороженое'
-        verbose_name_plural = 'Мороженое'
+        verbose_name_plural = 'Мороженое' 
+
+    def __str__(self):
+        return self.title 
