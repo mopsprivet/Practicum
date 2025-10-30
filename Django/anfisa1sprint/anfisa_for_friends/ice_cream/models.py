@@ -7,12 +7,24 @@ class Category(PublishedModel):
     slug = models.SlugField(max_length=64, unique=True)
     output_order = models.PositiveSmallIntegerField(default=100)
 
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории' 
+
 class Wrapper(PublishedModel): 
     title = models.CharField(max_length=256) 
+
+    class Meta:
+        verbose_name = 'Обёртка'
+        verbose_name_plural = 'Обёртки' 
 
 class Topping(PublishedModel): 
     title = models.CharField(max_length=256)
     slug = models.SlugField(max_length=64, unique=True)
+
+    class Meta:
+        verbose_name = 'Топпинг'
+        verbose_name_plural = 'Топпинги' 
 
 class IceCream(PublishedModel): 
     title = models.CharField(max_length=256)
@@ -20,4 +32,8 @@ class IceCream(PublishedModel):
     is_on_main = models.BooleanField(default=False)
     wrapper = models.OneToOneField(Wrapper, on_delete=models.SET_NULL, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    toppings = models.ManyToManyField(Topping)
+    toppings = models.ManyToManyField(Topping) 
+
+    class Meta:
+        verbose_name = 'Мороженое'
+        verbose_name_plural = 'Мороженое' 
