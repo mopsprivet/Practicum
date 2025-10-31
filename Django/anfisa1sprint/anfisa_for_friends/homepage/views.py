@@ -4,8 +4,9 @@ from ice_cream.models import IceCream
 
 def index(request):
     template = 'homepage/index.html'
-    # Запрос:
-    ice_cream_list = IceCream.objects.values('title', 'id', 'description')
+    # Запрос: # Верни только те объекты, у которых в поле is_on_main указано True: 
+    ice_cream_list = IceCream.objects.values('title', 'id', 'description').filter(is_on_main=True)
+    
     # Полученный из БД QuerySet передаём в словарь контекста:
     context = {
         'ice_cream_list': ice_cream_list,
