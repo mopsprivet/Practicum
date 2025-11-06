@@ -11,6 +11,7 @@ class PublishedCreatedModel(models.Model):
     class Meta: 
         abstract = True 
 
+
 class Category(PublishedCreatedModel): 
     title = models.CharField(max_length=256)
     description = models.TextField()
