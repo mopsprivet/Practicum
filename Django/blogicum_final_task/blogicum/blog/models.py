@@ -5,18 +5,17 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class PublishedCreatedModel(models.Model):
-    is_published = models.BooleanField(default=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Добавлено')
 
     class Meta:
         abstract = True
 
 
 class Category(PublishedCreatedModel):
-    title = models.CharField(max_length=256)
-    description = models.TextField()
-    slug = models.SlugField(unique=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=256, verbose_name='Заголовок')
+    description = models.TextField(verbose_name='Описание')
+    slug = models.SlugField(unique=True, verbose_name='Идентификатор')
 
     class Meta:
         verbose_name = 'категория'
@@ -27,7 +26,7 @@ class Category(PublishedCreatedModel):
 
 
 class Location(PublishedCreatedModel):
-    name = models.CharField(max_length=256)
+    name = models.CharField(max_length=256, verbose_name='Название места')
 
     class Meta:
         verbose_name = 'местоположение'
@@ -38,23 +37,26 @@ class Location(PublishedCreatedModel):
 
 
 class Post(PublishedCreatedModel):
-    title = models.CharField(max_length=256)
-    text = models.TextField()
-    pub_date = models.DateTimeField()
+    title = models.CharField(max_length=256, verbose_name='Заголовок')
+    text = models.TextField(verbose_name='Текст')
+    pub_date = models.DateTimeField(verbose_name='Дата и время публикации')
     author = models.ForeignKey(
         User,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        verbose_name='Автор публикации'
     )
     location = models.ForeignKey(
         Location,
         on_delete=models.SET_NULL,
         null=True,
-        blank=True
+        blank=True,
+        verbose_name='Местоположение'
     )
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,
-        null=True
+        null=True,
+        verbose_name='Категория'
     )
 
     class Meta:
