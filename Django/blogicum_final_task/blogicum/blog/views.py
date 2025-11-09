@@ -12,16 +12,16 @@ def index(request):
             is_published=True,
             category__is_published=True).order_by('-pub_date')[:5])
     context = {
-        'posts': posts[::-1]
+        'post_list': posts[::-1]
     }
     return render(request, template, context)
 
 
-def post_detail(request, id):
+def post_detail(request, post_id):
     template = 'blog/detail.html'
     post = get_object_or_404(
         Post.objects.select_related('category', 'location'),
-        pk=id,
+        pk=post_id,
         pub_date__lte=timezone.now(),
         is_published=True,
         category__is_published=True)
@@ -45,6 +45,6 @@ def category_posts(request, category_slug):
     )
     context = {
         'category': category,
-        'posts': posts
+        'post_list': posts
     }
     return render(request, template, context)
