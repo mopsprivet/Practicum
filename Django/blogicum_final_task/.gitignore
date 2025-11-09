@@ -132,6 +132,7 @@ dmypy.json
 # Папки, создаваемые средой разработки
 .idea
 .DS_Store
+**/.DS_Store
 .AppleDouble
 .LSOverride
 
