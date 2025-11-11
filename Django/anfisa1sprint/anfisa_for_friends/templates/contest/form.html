@@ -5,5 +5,30 @@
 {% endblock %}
 
 {% block content %}
-  <!-- Место для формы -->
+  <h1>Форма заявки на лучший рецепт мороженого</h1>
+
+  <form action="{% url 'contest:accepted' %}" method="get">
+    <p>
+      <label for="title">Название:</label><br>
+      <input type="text" id="title" name="title" required>
+    </p>
+
+    <p>
+      <label for="description">Описание:</label><br>
+      <input type="text" id="description" name="description" required>
+    </p>
+
+    <p>
+      <label for="price">Цена:</label><br>
+      <input type="number" id="price" name="price" step="0.01" required>
+      <br><small>Рекомендованная розничная цена</small>
+    </p>
+
+    <p>
+      <label for="comment">Комментарий:</label><br>
+      <input type="text" id="comment" name="comment">
+    </p> 
+    <input type="submit" value="Отправить">
+
+  </form>
 {% endblock %}
