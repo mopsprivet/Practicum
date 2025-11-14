@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-# Импортируем класс BirthdayForm, чтобы создать экземпляр формы.
 from .forms import BirthdayForm
 
 
