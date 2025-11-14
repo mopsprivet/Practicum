@@ -17,8 +17,16 @@
         {% bootstrap_button button_type="submit" content="Отправить" %}
       </form>
     </div>
-  </div>
-  {% if form.is_valid %}
-    <h2>Рецепт мороженого "{{ request.POST.title }}" принят на конкурс!</h2>
+</div>
+
+{% with data=form.instance %}
+  {% if form_is_valid %}
+    <h2>
+      Рецепт мороженого {{ data.title }} принят на конкурс!
+    </h2>
   {% endif %}
+{% endwith %}
+  <div>
+    <a href="{% url 'contest:list' %}">Список всех заявок</a>
+  </div>
 {% endblock %}
