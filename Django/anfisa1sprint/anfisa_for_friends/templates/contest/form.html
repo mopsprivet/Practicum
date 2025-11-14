@@ -5,11 +5,14 @@
 {% endblock %}
 
 {% block content %}
-  <form action="{% url 'contest:accepted' %}" method="get">
+  <form method="get">
     <table>
-      {{ form.as_table }}
+      {{ form }}
     </table>
-
     <input type="submit" value="Отправить">
   </form>
+
+  {% if request.GET and form.is_valid %}
+    <h2>Рецепт мороженого {{ request.GET.title }} принят на конкурс!</h2>
+  {% endif %}
 {% endblock %}
