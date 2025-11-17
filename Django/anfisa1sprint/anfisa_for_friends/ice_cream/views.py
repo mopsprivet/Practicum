@@ -1,33 +1,27 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
-ice_cream_catalog = [
-    {
-        'id': 0,
-        'title': 'Классический пломбир',
-        'description': 'Настоящее мороженое, для истинных ценителей вкуса. '
-                       'Если на столе появляется пломбир — это не надолго.',
-    },
-    {
-        'id': 1,
-        'title': 'Мороженое с кузнечиками',
-        'description': 'В колумбийском стиле: мороженое '
-                       'с добавлением настоящих карамелизованных кузнечиков.',
-    },
-    {
-        'id': 2,
-        'title': 'Мороженое со вкусом сыра чеддер',
-        'description': 'Вкус настоящего сыра в вафельном стаканчике.',
-    },
-]
+from ice_cream.models import IceCream
 
 
 def ice_cream_detail(request, pk):
-    template = 'ice_cream/detail.html'
-    context = {'ice_cream': ice_cream_catalog[pk]}
-    return render(request, template, context)
+    template_name = 'ice_cream/detail.html'
+    ice_cream = get_object_or_404(
+        IceCream.objects.filter(
+            is_published=True,
+            category__is_published=True
+        ),
+        pk=pk
+    )
+    context = {'ice_cream': ice_cream}
+    return render(request, template_name, context)
 
 
 def ice_cream_list(request):
     template = 'ice_cream/list.html'
-    context = {'ice_cream_list': ice_cream_catalog}
+    ice_cream_list = IceCream.objects.select_related('category').filter(
+        is_published=True,
+        category__is_published=True
+    )
+
+    context = {'ice_cream_list': ice_cream_list}
     return render(request, template, context)

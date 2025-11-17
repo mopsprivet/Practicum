@@ -28,7 +28,7 @@ class IceCreamAdmin(admin.ModelAdmin):
         'category'
     )
     search_fields = ('title',)
-    list_filter = ('is_published',)
+    list_filter = ('category',)
     list_display_links = ('title',)
     filter_horizontal = ('toppings',)
 
