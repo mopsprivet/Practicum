@@ -1,7 +1,8 @@
 from django.db import models
-
+from django.contrib.auth import get_user_model 
 from core.models import PublishedModel
 
+User = get_user_model() 
 
 class Category(PublishedModel):
     title = models.CharField(max_length=256, verbose_name='Название')
@@ -48,6 +49,9 @@ class Wrapper(PublishedModel):
 
 
 class IceCream(PublishedModel):
+    author = models.ForeignKey(
+        User, verbose_name='Автор записи', on_delete=models.CASCADE, null=True
+    )
     title = models.CharField(max_length=256, verbose_name='Название')
     description = models.TextField(verbose_name='Описание')
     wrapper = models.OneToOneField(
