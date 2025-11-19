@@ -1,5 +1,7 @@
 from django.contrib import admin
-from django.urls import include, path
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import CreateView
+from django.urls import include, path, reverse_lazy 
 from django.conf import settings
 
 urlpatterns = [
@@ -8,7 +10,16 @@ urlpatterns = [
     path('ice_cream/', include('ice_cream.urls', namespace='ice_cream')),
     path('contest/', include('contest.urls')),
     path('admin/', admin.site.urls),
-    path('auth/', include('django.contrib.auth.urls'))
+    path('auth/', include('django.contrib.auth.urls')), 
+    path(
+        'auth/registration/', 
+        CreateView.as_view(
+            template_name='registration/registration_form.html',
+            form_class=UserCreationForm,
+            success_url=reverse_lazy('pages:homepage'),
+        ),
+        name='registration',
+    ),
 ] 
 
 # Если проект запущен в режиме разработки...
