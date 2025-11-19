@@ -1,8 +1,13 @@
 from django.shortcuts import get_object_or_404, redirect, render
-
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from .forms import ContestForm
 from .models import Contest
 
+
+@login_required
+def simple_view(request):
+    return HttpResponse('Страница для залогиненных пользователей!')
 
 def proposal(request, pk=None):
     if pk is not None:
