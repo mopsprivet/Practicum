@@ -10,7 +10,10 @@ def simple_view(request):
     return HttpResponse('Страница для залогиненных пользователей!')
 
 def proposal(request, pk=None):
-    if pk is not None:
+    if not request.user.is_authenticated:
+        # Если пользователь не залогинен — отправляем его на страницу для входа:
+        return redirect('login')
+    elif pk is not None:
         instance = get_object_or_404(Contest, pk=pk)
     else:
         instance = None
