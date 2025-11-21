@@ -109,7 +109,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-Django/anfisa1sprint/venv/
 
 # Spyder project settings
 .spyderproject
@@ -132,7 +131,6 @@ dmypy.json
 # Папки, создаваемые средой разработки
 .idea
 .DS_Store
-**/.DS_Store
 .AppleDouble
 .LSOverride
 
@@ -150,13 +148,5 @@ dmypy.json
 # папки со статикой и медиа
 media/
 
-# Testing
-build_tests/
-yap_testing
-html/img/img/ 
+sent_emails/
 
-# # Локальные файлы проектов
-# anfisa1sprint/venv/
-# anfisa1sprint/**/__pycache__/
-# anfisa1sprint/**/migrations/__pycache__/
-# anfisa1sprint/db.sqlite3

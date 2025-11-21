@@ -2,8 +2,9 @@ from django.db import models
 
 from django.contrib.auth import get_user_model
 
+from .constants import ACCEPTABLE_LENGTH
+
 User = get_user_model()
-ACCEPTABLE_LENGTH = 256
 
 
 class PublishedCreatedModel(models.Model):
@@ -48,7 +49,7 @@ class Location(PublishedCreatedModel):
         verbose_name_plural = 'Местоположения'
 
     def __str__(self):
-        return self.title
+        return self.name
 
 
 class Post(PublishedCreatedModel):
@@ -77,14 +78,14 @@ class Post(PublishedCreatedModel):
         Category,
         on_delete=models.SET_NULL,
         null=True,
-        verbose_name='Категория'
+        verbose_name='Категория',
+        related_name='posts'
     )
 
     class Meta:
         verbose_name = 'публикация'
         verbose_name_plural = 'Публикации'
         ordering = ['-pub_date']
-
 
     def __str__(self):
         return self.title

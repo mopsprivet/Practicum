@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models.functions import Now
 
 from .models import Post, Category
+from .constants import RECENT_POSTS_COUNT
 
 
 def published_posts(manager):
@@ -14,7 +15,7 @@ def published_posts(manager):
 
 def index(request):
     template = 'blog/index.html'
-    posts = published_posts(Post.objects)[:5]
+    posts = published_posts(Post.objects)[:RECENT_POSTS_COUNT]
     context = {
         'post_list': posts
     }
@@ -40,7 +41,7 @@ def category_posts(request, category_slug):
         slug=category_slug,
         is_published=True
     )
-    posts = published_posts(Post.objects).filter(category=category)
+    posts = published_posts(category.posts)
     context = {
         'category': category,
         'post_list': posts
