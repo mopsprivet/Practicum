@@ -29,6 +29,12 @@ ALLOWED_HOSTS = ['*']
 
 CSRF_FAILURE_VIEW = 'core.views.csrf_failure' 
 
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
+
+LOGIN_REDIRECT_URL = 'blog:index'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = 'login'
 
 # Application definition
 
@@ -46,6 +52,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
