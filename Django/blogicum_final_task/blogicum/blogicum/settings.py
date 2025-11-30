@@ -33,8 +33,10 @@ CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
     'blog.apps.BlogConfig',
+    'django_bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

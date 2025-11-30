@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models.functions import Now
+from django.contrib.auth.models import User
 
 from .models import Post, Category
 from .constants import RECENT_POSTS_COUNT
@@ -47,3 +48,7 @@ def category_posts(request, category_slug):
         'post_list': posts
     }
     return render(request, template, context)
+
+def profile(request, username):
+    user = get_object_or_404(User, username=username)
+    return render(request, "blog/profile.html", {"profile_user": user})
